@@ -85,6 +85,10 @@ class Material extends BaseModel {
             if (it.materialType == null) {
                 it.materialType = new MaterialType(name: "sample")
             }
+            if (it.getParents() == null || it.getParents().size() == 0) {
+                Material parentMaterial = new Material(name: "parentMaterialName", materialType: new MaterialType(name: "sample"))
+                it.setParents(Arrays.asList(parentMaterial))
+            }
             it
         }
     }
